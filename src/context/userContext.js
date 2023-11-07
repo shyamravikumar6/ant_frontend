@@ -9,13 +9,16 @@ export const UserContext = createContext({});
 
 export const UserContextWrapper=()=>{
   const [loading,setLoading]=useState(true);
+  const [user,setUser]=useState({});
 const [users,dispatch]= useReducer(Users,[]);
  const memoObject = useMemo(()=>({
   users,
   dispatch,
   loading,
+  user,
+  setUser,
   setLoading
- }),[users,loading])
+ }),[users,user,loading])
 return(
 
    <UserContext.Provider value={memoObject}>
